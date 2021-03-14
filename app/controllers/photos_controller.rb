@@ -9,12 +9,13 @@ class PhotosController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
-    @photo = Photo.where({:id => the_id }).at(0)
+    @photo = Photo.where({ :id => the_id }).at(0)
 
     render({ :template => "photos/show.html.erb" })
   end
 
   def create
+    p "params ====> #{params}"
     @photo = Photo.new
     @photo.caption = params.fetch("query_caption")
     @photo.image = params.fetch("query_image")
@@ -37,7 +38,7 @@ class PhotosController < ApplicationController
 
     if @photo.valid?
       @photo.save
-      redirect_to("/photos/#{@photo.id}", { :notice => "Photo updated successfully."} )
+      redirect_to("/photos/#{@photo.id}", { :notice => "Photo updated successfully." })
     else
       redirect_to("/photos/#{@photo.id}", { :alert => "Photo failed to update successfully." })
     end
@@ -49,6 +50,6 @@ class PhotosController < ApplicationController
 
     @photo.destroy
 
-    redirect_to("/photos", { :notice => "Photo deleted successfully."} )
+    redirect_to("/photos", { :notice => "Photo deleted successfully." })
   end
 end

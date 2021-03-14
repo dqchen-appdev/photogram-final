@@ -1,14 +1,12 @@
 <h1>List of photos</h1>
-<% if @current_user.present? %>
-  <form action="/insert_photo" method="post">
-    <label for="browser_input">Image</label>
-    <input id="browser_input" type="text" name="query_image" placeholder="Enter a URL for the image...">
-    <label for="browser_caption">Caption</label>
-    <textarea id="browser_caption" name="query_caption" placeholder="Enter a caption for the photo..."></textarea>
-    <button>Add photo</button>
-  </form>
-  <hr>
-<% end %>
+<form action="/insert_photo" method="post" enctype="multipart/form-data">
+  <label for="browser_image">Upload Image</label>
+  <input type="file" id="browser_input" name="query_image" class="form-control">
+  <label for="browser_caption">Caption</label>
+  <textarea id="browser_caption" name="query_caption" placeholder="Enter a caption for the photo..."></textarea>
+  <button>Add photo</button>
+</form>
+<hr>
 <table border="1">
   <tr>
     <th>Image</th>

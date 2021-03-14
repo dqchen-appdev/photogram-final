@@ -45,11 +45,11 @@ class UsersController < ApplicationController
 
   def update
     @user = @current_user
-    @user.email = params.fetch("query_email")
-    @user.password = params.fetch("query_password")
-    @user.password_confirmation = params.fetch("query_password_confirmation")
-    @user.private = params.fetch("query_private", false)
-    @user.username = params.fetch("query_username")
+    @user.email = params.fetch("query_email") if params.has_key? "query_email"
+    @user.password = params.fetch("query_password") if params.has_key? "query_password"
+    @user.password_confirmation = params.fetch("query_password_confirmation") if params.has_key? "query_password_confirmation"
+    @user.private = params.fetch("query_private", false) if params.has_key? "query_private"
+    @user.username = params.fetch("query_username") if params.has_key? "query_username"
 
     if @user.valid?
       @user.save

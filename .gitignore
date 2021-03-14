@@ -42,3 +42,4 @@ appdev/
 node_modules
 package-lock.json
 .theia/.ltici_apitoken.yml
+public/uploads/*
